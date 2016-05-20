@@ -17,7 +17,7 @@ void getarrays(int *arrays, int start, const int size, int *result, const int le
             printf("\n");
         }
         else{
-            getarrays(arrays, i, size, result, length - 1);
+            getarrays(arrays, i+1, size, result, length - 1);
         }
     }
 }
