@@ -27,7 +27,7 @@ int arrEnum(int *arr2, int *result, int length, int start,int *arr) {
             for (int i = 0; i < length; i++) {
                 change(arr, new_arr[i]);
             }
-            if (all_whiteOr_all_black(arr, 16)) {
+            if (all_whiteOr_all_black(arr, 16)==1) {
                 free(new_arr);
                 return length;
             }
