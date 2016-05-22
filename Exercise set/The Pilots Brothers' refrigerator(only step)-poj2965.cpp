@@ -4,6 +4,8 @@ bool refrigerator[6][6]={false};
 bool flag;
 int deep;
 int step;
+int cols[16] = {0};
+int rows[16] = {0};
 bool check_all(void){
 	int i,j;
 	for(i=1;i<5;i++){
@@ -15,7 +17,7 @@ bool check_all(void){
 	return true;
 }
 
-void open(int row,int col){
+void open(const int row,const int col){
 	refrigerator[row][col] = !refrigerator[row][col];
 	for(int i = 1;i<5;i++)
 		refrigerator[i][col] = !refrigerator[i][col];
@@ -24,13 +26,20 @@ void open(int row,int col){
 }
 
 
-void dfs(int row,int col,int deep){
+void dfs(int row,int col,const int deep){
+    if (deep >= 17||row>5||col>5)
+        return;
+
 	if(deep==step){
 		flag = check_all();
 		return;
 	}
 	if(flag||col==5)
 		return;
+    if (deep <=step) {
+        cols[deep ] = col;
+        rows[deep ] = row;
+    }
 	open(row,col);
 	if(col<4)
 		dfs(row,col+1,deep+1);
@@ -41,6 +50,7 @@ void dfs(int row,int col,int deep){
 		dfs(row,col+1,deep);
 	else
 		dfs(row+1,col-3,deep);
+
 	return;
 }
 
@@ -50,8 +60,9 @@ int main(){
 	for (i=1;i<5;i++){
 		for (j=1;j<5;j++){
 			cin>>temp;
-			if(temp=='-')
-				refrigerator[i][j]=true;
+            if (temp == '-') {
+                refrigerator[i][j] = true;
+            }
 		}
 			
 	}
@@ -60,8 +71,11 @@ int main(){
 		if(flag)
 			break;
 	}
-	if(flag)
-		cout<<step;
+	if(flag){
+		cout<<step<<endl;
+		for(int i = 0;i<step;i++)
+			cout<<rows[i]<<" "<<cols[i]<<endl;
+	}
 	else
 		cout<<"impossible";
     system("pause");
