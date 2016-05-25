@@ -1,13 +1,16 @@
 #include<iostream>
 using std::cin;
 using std::cout;
-int getsum(int n){
+int getsum(void){
     char intger[100];
-    int getvalue, value;
-    value = atoi(intger);
-
-    
-	return sum;
+	int result = 0;
+	cin>>intger;
+    int i = 0;
+	while(i<strlen(intger)){
+		result += intger[i] - 48;
+		i++;
+	}
+	return result;
 }
 void readsum(int sum){
 	int temp;
@@ -53,9 +56,8 @@ void readsum(int sum){
     return;
 }
 int main(){
-	int n;
-	cin>>n;
-	readsum(getsum(n));
+    int sum = getsum();
+	readsum(sum);
     system("pause");
 	return 0;
 }
