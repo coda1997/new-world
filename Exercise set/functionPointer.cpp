@@ -6,7 +6,6 @@ int main(){
     std::cin >> size;
     double** Matirx = allocMatrix(size);
     releaseMatrix(Matirx);
-    system("pause");
 	return 0;
 	
 }
