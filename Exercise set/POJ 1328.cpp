@@ -11,14 +11,15 @@ bool operator <(point a,point b){
 }
 
 int main(){
-	int r = 0;
-	int cases = 0;
-	int islandNum = 0;
-	while(cin>>islandNum>>r&&(islandNum||r)){
+	double r ;
+	int cases =0 ;
+	int islandNum;
+	while(cin>>islandNum>>r &&(islandNum||r)){
 		bool flag = false;
 		for(int i = 0;i<islandNum;i++){
 			double a,b;
 			cin>>a>>b;
+
 			if(fabs(b)>r)
 				flag = true;
 			else{
@@ -26,12 +27,23 @@ int main(){
 				p[i].right = a*1.0+sqrt(r*r-b*b);
 			}
 		}
-		cout<<"Case"<<++cases<<":";
+		cout<<"Case "<<++cases<<": ";
+        int countt;
+        countt = 1;
+        if (islandNum == 1) {
+            if (flag) {
+                cout << -1 << endl;
+                continue;
 
+            }
+            cout << countt << endl;
+
+            continue;
+        }
 		if(flag)
 			cout<<-1<<endl;
 		else{
-            int countt = 1;
+
 			sort(p,p+islandNum);
 			temp = p[0];
 			
@@ -43,8 +55,11 @@ int main(){
 				else if (p[i].right<temp.right)
 					temp = p[i];
 			}
-			cout<<countt<<endl;
+            cout << countt << endl;
 		}
+
+
+
 	}
     return 0;
 }
