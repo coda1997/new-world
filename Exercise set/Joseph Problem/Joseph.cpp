@@ -1,32 +1,29 @@
 #include<iostream>
 #include"Joseph.h"
-Joseph::Joseph(int n) {
-    people = new int[n];
-    for (int i = 0; i < n; i++) {
+Joseph::Joseph(int r) {
+    people = new int[r];
+    for (int i = 0; i < r; i++) {
         people[i] = i + 1;
     }
-    length = n;
+    length = r;
 }
 Joseph::~Joseph() {
     delete[] people;
 }
-bool Joseph::removePeople(int n){//0-length-1
-    int i = n;
-    if (n<0 || n>length - 1)
-        return false;
-
-    std::cout << "the "<<people[n] <<"th people leaves "<< std::endl;
-
-    while (i < length) {
-        people[i ] = people[i+1];
-        i++;
+int Joseph::removePeople(int temp){//0-length-1
+    int r = temp;
+    while (length!=0)
+    {
+        r += temp;
+        r %= length;
+        std::cout << "the No." << people[r] << " people leaves" << std::endl;
+        for (int i = r; i < length-1; i++)
+            people[i] = people[i + 1];
+        length--;
     }
-    length--;
-    if (length == 0) {
-        std::cout << "all people have left the ring." << std::endl;
-        return true;
-    }
-    return true;
+    std::cout << "All people has left. " << std::endl;
+    return 0;
+
 }
 int Joseph::getLength() {
     return length;

@@ -10,8 +10,10 @@ int main() {
     //    peo.removePeople(rand() % peo.getLength());
     //}
     int num;
-    while (cin >> num)
-        peo.removePeople(num%peo.getLength());
+    while (cin >> num) {
+        
+        peo.removePeople(num);
+    }
     getchar();
 
 }

@@ -2,7 +2,7 @@
 class Joseph {
 public:
     Joseph(int n = 0);
-    bool removePeople(int n);
+    int removePeople( int n);
     ~Joseph();
     int getLength();
 private:
